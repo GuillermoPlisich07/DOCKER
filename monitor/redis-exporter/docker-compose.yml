@@ -1,0 +1,22 @@
+networks:
+  redis:
+    name: redis
+    external: true
+  prometheus:
+    name: prometheus
+    external: true
+
+
+services:
+  redis-exporter:
+    image: oliver006/redis_exporter:alpine
+    container_name: redis-exporter
+    ports:
+      - "9121:9121"
+    restart: unless-stopped
+    environment:
+      REDIS_ADDR: "redis:6379"
+    networks:
+      - redis
+      - prometheus
+

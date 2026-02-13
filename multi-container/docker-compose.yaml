@@ -1,0 +1,18 @@
+services:
+  app:
+    image: my_app:v2
+    ports:
+      - "3000:3000"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=123N!tony
+      - MYSQL_DB=todos
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - C:\Users\f283592\Desktop\DOCKER\multi-container\todo-mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123N!tony
+      - MYSQL_DATABASE=todos

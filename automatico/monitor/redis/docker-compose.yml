@@ -1,0 +1,14 @@
+services:
+  redis:
+    image: redis:8.4.0-alpine
+    container_name: redis
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    networks:
+      - redis
+
+networks:
+  redis:
+    driver: bridge
+    name: redis
